@@ -1,18 +1,24 @@
-// auth_event.dart
-
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthEvent extends Equatable {
   const AuthEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class AppStarted extends AuthEvent {} // Define the AppStarted event
+class AppStarted extends AuthEvent {}
 
-class AuthCheckRequested extends AuthEvent {} // Define the AuthCheckRequested event
+class AuthCheckRequested extends AuthEvent {}
 
-class UserLoggedIn extends AuthEvent {} // Define the UserLoggedIn event
+class UserLoggedIn extends AuthEvent {
+  final User user; // Define user parameter
 
-class UserLoggedOut extends AuthEvent {} // Define the UserLoggedOut event
+  UserLoggedIn(this.user);
+
+  @override
+  List<Object?> get props => [user];
+}
+
+class UserLoggedOut extends AuthEvent {}

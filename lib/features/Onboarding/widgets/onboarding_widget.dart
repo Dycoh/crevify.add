@@ -4,6 +4,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 
 import '../models/onboarding_model.dart';
+import '../../authentication/screens/login_page.dart'; // Import your LoginPage widget
+import '../../authentication/screens/signup_page.dart'; // Import your SignupPage widget
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({Key? key}) : super(key: key);
@@ -99,7 +101,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   36), // Adding space between the onboarding content and the button
           ElevatedButton(
             onPressed: () async {
-              Navigator.of(context).pushNamed('Home');
+              Navigator.pushNamed(context, '/login'); // Navigate to the login screen
             },
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(horizontal: 56, vertical: 14),

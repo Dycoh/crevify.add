@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_core/firebase_core.dart'; // Import Firebase Core
+import 'package:firebase_core/firebase_core.dart'; 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:crevify/features/authentication/services/auth_service.dart'; // Import your AuthenticationService
-
+import 'package:crevify/features/authentication/services/auth_service.dart'; 
 import 'features/authentication/bloc/Auth_bloc/auth_bloc.dart';
 import 'features/authentication/bloc/Auth_bloc/auth_event.dart';
 import 'features/authentication/bloc/Auth_bloc/auth_state.dart';
-import 'features/homepage/screens/home_page.dart'; // Import your home page widget
-import 'features/Onboarding/widgets/onboarding_widget.dart'; // Import your onboarding widget
-import 'features/Onboarding/widgets/splash_screen.dart'; // Import your splash screen widget
+import 'features/homepage/screens/home_page.dart'; 
+import 'features/Onboarding/widgets/onboarding_widget.dart'; 
+import 'features/Onboarding/widgets/splash_screen.dart'; 
+import 'features/authentication/screens/login_page.dart'; // Import your LoginPage widget
+import 'features/authentication/screens/signup_page.dart'; // Import your SignupPage widget
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized
-  await Firebase.initializeApp(); // Initialize Firebase
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await Firebase.initializeApp(); 
   runApp(
     BlocProvider(
       create: (context) => AuthBloc(AuthenticationService(FirebaseAuth.instance)),
@@ -27,17 +28,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Crevify',
-      home: BlocBuilder<AuthBloc, AuthState>(
-        builder: (context, state) {
-          if (state is AuthInitial) {
-            return SplashScreen(); // Display SplashScreen while checking authentication state
-          } else if (state is AuthAuthenticated) {
-            return HomePage(); // Display HomePage if user is authenticated
-          } else {
-            return OnboardingWidget(); // Display OnboardingWidget if user is not authenticated
-          }
-        },
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (state is AuthInitial) {
+                  return SplashScreen();
+                } else if (state is AuthAuthenticated) {
+                  return HomePage(user: state.user); // Pass user to HomePage
+                } else {
+                  return OnboardingWidget();
+                }
+              },
+            ),
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignupPage(),
+        // other routes...
+      },
     );
   }
 }
