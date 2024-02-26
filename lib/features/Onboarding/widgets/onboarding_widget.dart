@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart' as smooth_page_indicator;
 
 import '../models/onboarding_model.dart';
@@ -47,19 +48,19 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                 scrollDirection: Axis.horizontal,
                 children: [
                   _buildPage(
-                    imageUrl: 'assets/images/joseph-gonzalez-fdlZBWIP0aM-unsplash.jpg',
-                    title: 'Welcome to Campus Crave',
-                    subtitle: 'Good eats, Good vibes, let your cravings thrive.',
+                    imageUrl: 'assets/images/splash_screen_1.jpg',
+                    title: 'Welcome to Crevify!',
+                    subtitle: 'Where Healthy Meets Delicious!',
                   ),
                   _buildPage(
-                    imageUrl: 'assets/images/edgar-castrejon-1SPu0KT-Ejg-unsplash.jpg',
-                    title: 'Discover more flavors',
-                    subtitle: 'Order and explore your favorite flavors galore!',
+                    imageUrl: 'assets/images/splash_screen_2.jpg',
+                    title: 'No Time? No Problem!',
+                    subtitle: 'Healthy Meals, Delivered Fast!',
                   ),
                   _buildPage(
-                    imageUrl: 'assets/images/victoria-shes-4acsnIWXm3k-unsplash.jpg',
-                    title: 'Rate your favorites',
-                    subtitle: 'Create your list of favorite bites, and rate your delights!',
+                    imageUrl: 'assets/images/splash_screen_3.jpg',
+                    title: 'Eat Well, Live Well!',
+                    subtitle: 'Nutritious Meals for Campus Life!',
                   ),
                 ],
               ),
@@ -92,6 +93,19 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   ),
                 ),
               ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 40.0),
+                  child: Text(
+                    '#TeamLarusa',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -111,7 +125,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
         ),
       ),
       child: Container(
-        width: 100,
+        width: MediaQuery.of(context).size.width * 0.75, // 75% of screen width
         height: MediaQuery.of(context).size.height * 1,
         decoration: const BoxDecoration(
           color: Color(0x990F1113),
@@ -120,10 +134,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/logos/CampusCrave_Logo_Vertical_Main_White.png',
-              height: 100, // Adjust height as needed
-              width: 100, // Adjust width as needed
+            SvgPicture.asset(
+              'assets/logos/CampusCrave_Logo_Vertical_Main_White.svg',
+              height: 120, // Slightly bigger logo
+              width: 120,
+              color: Colors.white, // White logo
             ),
             const SizedBox(height: 20),
             Text(
@@ -132,7 +147,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               style: const TextStyle(
                 fontFamily: 'Poppins',
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 32, // Bigger title
+                fontWeight: FontWeight.bold, // Bold title
               ),
             ),
             const SizedBox(height: 10),
@@ -142,8 +158,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               style: const TextStyle(
                 fontFamily: 'Poppins',
                 color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
+                fontSize: 16, // Slightly bigger subtitle
               ),
             ),
             const SizedBox(height: 20),
@@ -152,9 +167,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                 Navigator.of(context).pushNamed('Home');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.secondary, // Use secondary color from the theme
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
-              child: const Text('Get Started'),
+              child: Text(
+                'Get Started',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
