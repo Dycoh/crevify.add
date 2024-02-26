@@ -4,11 +4,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 
 import '../models/onboarding_model.dart';
-import '../../authentication/screens/login_page.dart'; // Import your LoginPage widget
-import '../../authentication/screens/signup_page.dart'; // Import your SignupPage widget
+// Import your LoginPage widget
+// Import your SignupPage widget
 
 class OnboardingWidget extends StatefulWidget {
-  const OnboardingWidget({Key? key}) : super(key: key);
+  const OnboardingWidget({super.key});
 
   @override
   State<OnboardingWidget> createState() => _OnboardingWidgetState();
@@ -35,7 +35,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromARGB(255, 0, 32, 0),
+      backgroundColor: const Color.fromARGB(255, 0, 32, 0),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -80,13 +80,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           curve: Curves.ease,
                         );
                       },
-                      effect: smooth_page_indicator.ExpandingDotsEffect(
+                      effect: const smooth_page_indicator.ExpandingDotsEffect(
                         expansionFactor: 4,
                         spacing: 8,
                         radius: 40,
                         dotWidth: 10,
                         dotHeight: 10,
-                        dotColor: const Color(0xFFD9D9D9),
+                        dotColor: Color(0xFFD9D9D9),
                         activeDotColor: Color.fromARGB(255, 0, 143, 0),
                         paintStyle: PaintingStyle.fill,
                       ),
@@ -96,7 +96,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
               height:
                   36), // Adding space between the onboarding content and the button
           ElevatedButton(
@@ -104,11 +104,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               Navigator.pushNamed(context, '/login'); // Navigate to the login screen
             },
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 56, vertical: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 14),
               backgroundColor:
                   Colors.green[900], // Changing background color to dark green
             ),
-            child: Text(
+            child: const Text(
               'Get Started',
               style: TextStyle(
                 color: Colors.white,
@@ -116,15 +116,15 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               ),
             ),
           ),
-          SizedBox(height: 36), // Adding space between the button and the text
-          Text(
+          const SizedBox(height: 36), // Adding space between the button and the text
+          const Text(
             '#TeamLarusa',
             style: TextStyle(
               color: Colors.white,
               fontSize: 12,
             ),
           ),
-          SizedBox(height: 40), // Adding additional space at the bottom
+          const SizedBox(height: 40), // Adding additional space at the bottom
         ],
       ),
     );
@@ -147,38 +147,38 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             SvgPicture.asset(
               'assets/logos/CampusCrave_Logo_Vertical_Main_White.svg',
               height: 160,
               width: 160,
               color: Colors.white,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
                 subtitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 16,
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

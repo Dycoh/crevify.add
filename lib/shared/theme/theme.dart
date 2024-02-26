@@ -15,7 +15,8 @@ class AppTheme {
       bodyLarge: TextStyle(color: Color(0xFFDF3F3F)),
       bodyMedium: TextStyle(color: Color(0xFF090F13)),
       labelLarge: TextStyle(color: Color(0xFFFFFFFF)), // Change button text color to white
-    ), colorScheme: const ColorScheme.light(
+    ),
+    colorScheme: const ColorScheme.light(
       secondary: Color(0xFF00731F),
       onPrimary: Color(0xFF101213),
       onSecondary: Color.fromARGB(255, 120, 150, 173),
@@ -40,7 +41,8 @@ class AppTheme {
       bodyLarge: TextStyle(color: Color(0xFFDF3F3F)),
       bodyMedium: TextStyle(color: Color(0xFF090F13)),
       labelLarge: TextStyle(color: Color(0xFFFFFFFF)), // Change button text color to white
-    ), colorScheme: const ColorScheme.dark(
+    ),
+    colorScheme: const ColorScheme.dark(
       secondary: Color(0xFF00731F),
       onPrimary: Color(0xFFFFFFFF),
       onSecondary: Color(0xFF95A1AC),
@@ -52,4 +54,8 @@ class AppTheme {
       onError: Color(0xFF616161),
     ).copyWith(background: const Color(0xFF1D2429)).copyWith(error: const Color(0xFFE21C3D)),
   );
+}
+
+class CustomTheme {
+  static const Color darkGreenColor = Color.fromARGB(255, 0, 32, 0); // Define your dark green color
 }

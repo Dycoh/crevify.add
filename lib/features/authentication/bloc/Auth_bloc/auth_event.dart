@@ -15,7 +15,7 @@ class AuthCheckRequested extends AuthEvent {}
 class UserLoggedIn extends AuthEvent {
   final User user; // Define user parameter
 
-  UserLoggedIn(this.user);
+  const UserLoggedIn(this.user);
 
   @override
   List<Object?> get props => [user];

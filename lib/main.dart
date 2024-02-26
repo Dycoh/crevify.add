@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:crevify/features/authentication/services/auth_service.dart'; 
 import 'features/authentication/bloc/Auth_bloc/auth_bloc.dart';
-import 'features/authentication/bloc/Auth_bloc/auth_event.dart';
 import 'features/authentication/bloc/Auth_bloc/auth_state.dart';
 import 'features/homepage/screens/home_page.dart'; 
 import 'features/Onboarding/widgets/onboarding_widget.dart'; 
@@ -18,12 +17,14 @@ void main() async {
   runApp(
     BlocProvider(
       create: (context) => AuthBloc(AuthenticationService(FirebaseAuth.instance)),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,16 +34,16 @@ class MyApp extends StatelessWidget {
         '/': (context) => BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 if (state is AuthInitial) {
-                  return SplashScreen();
+                  return const SplashScreen();
                 } else if (state is AuthAuthenticated) {
                   return HomePage(user: state.user); // Pass user to HomePage
                 } else {
-                  return OnboardingWidget();
+                  return const OnboardingWidget();
                 }
               },
             ),
-        '/login': (context) => LoginPage(),
-        '/signup': (context) => SignupPage(),
+        '/login': (context) => const LoginPage(),
+        '/signup': (context) => const SignupPage(),
         // other routes...
       },
     );
