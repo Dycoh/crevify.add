@@ -1,61 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart'; // Import Firebase Core
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:crevify/features/authentication/services/auth_service.dart'; // Import your AuthenticationService
 
-import '../../../shared/theme/theme.dart';
-import '../features/onboarding/widgets/onboarding_widget.dart';
-import '../features/onboarding/widgets/splash_screen.dart';
+import 'features/authentication/bloc/Auth_bloc/auth_bloc.dart';
+import 'features/authentication/bloc/Auth_bloc/auth_event.dart';
+import 'features/authentication/bloc/Auth_bloc/auth_state.dart';
+import 'features/homepage/screens/home_page.dart'; // Import your home page widget
+import 'features/Onboarding/widgets/onboarding_widget.dart'; // Import your onboarding widget
+import 'features/Onboarding/widgets/splash_screen.dart'; // Import your splash screen widget
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that Flutter is initialized
+  await Firebase.initializeApp(); // Initialize Firebase
+  runApp(
+    BlocProvider(
+      create: (context) => AuthBloc(AuthenticationService(FirebaseAuth.instance)),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  Future<bool> checkIfUserIsLoggedIn() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    final User? user = _auth.currentUser;
-    return user != null;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Crevify',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      home: FutureBuilder<bool>(
-        future: checkIfUserIsLoggedIn(),
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return SplashScreen(); // Display SplashScreen while waiting for user authentication check
-            case ConnectionState.done:
-              if (snapshot.data != null && snapshot.data!) {
-                return HomePage(); // Display HomePage if user is logged in
-              } else {
-                return OnboardingWidget(); // Display OnboardingWidget if user is not logged in
-              }
-            default:
-              return Container(); // Return empty container by default
+      home: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          if (state is AuthInitial) {
+            return SplashScreen(); // Display SplashScreen while checking authentication state
+          } else if (state is AuthAuthenticated) {
+            return HomePage(); // Display HomePage if user is authenticated
+          } else {
+            return OnboardingWidget(); // Display OnboardingWidget if user is not authenticated
           }
         },
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: Text('Welcome to the Home Page!'),
       ),
     );
   }

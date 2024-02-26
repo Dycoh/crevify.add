@@ -33,7 +33,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: const Color(0xFF14181B),
+      backgroundColor: Color.fromARGB(255, 0, 32, 0),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -65,7 +65,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 40.0),
+                    padding: const EdgeInsets.only(bottom: 60.0),
                     child: smooth_page_indicator.SmoothPageIndicator(
                       controller: _model.pageViewController ??=
                           PageController(initialPage: 0),
@@ -85,7 +85,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         dotWidth: 10,
                         dotHeight: 10,
                         dotColor: const Color(0xFFD9D9D9),
-                        activeDotColor: Theme.of(context).primaryColor,
+                        activeDotColor: Color.fromARGB(255, 0, 143, 0),
                         paintStyle: PaintingStyle.fill,
                       ),
                     ),
@@ -96,13 +96,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
           ),
           SizedBox(
               height:
-                  20), // Adding space between the onboarding content and the button
+                  36), // Adding space between the onboarding content and the button
           ElevatedButton(
             onPressed: () async {
               Navigator.of(context).pushNamed('Home');
             },
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 56, vertical: 14),
               backgroundColor:
                   Colors.green[900], // Changing background color to dark green
             ),
@@ -114,7 +114,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               ),
             ),
           ),
-          SizedBox(height: 20), // Adding space between the button and the text
+          SizedBox(height: 36), // Adding space between the button and the text
           Text(
             '#TeamLarusa',
             style: TextStyle(
