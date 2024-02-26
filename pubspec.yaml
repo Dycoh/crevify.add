@@ -9,6 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   
+  #flutter_native_splash: ^2.3.10
   flutter_bloc: ^8.0.0 # Add flutter_bloc dependency
   equatable: ^2.0.3 # Add equatable dependency
   firebase_auth: ^4.17.4

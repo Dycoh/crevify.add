@@ -1,8 +1,8 @@
 flutter_native_splash:
-  color: "#2A4400"
-  color_dark: "#2A4400"
-  image: assets\logos\CampusCrave_Iconmark_Main.png
-  image_dark: assets\logos\CampusCrave_Iconmark_Main_White.png
+  #color: "#2A4400"
+  #color_dark: "#2A4400"
+  #image: assets\logos\CampusCrave_Iconmark_Main.png
+  #image_dark: assets\logos\CampusCrave_Iconmark_Main_White.png
 
   # This package generates native code to customize Flutter's default white native splash screen
   # with background color and splash image.
@@ -52,10 +52,10 @@ flutter_native_splash:
   # Please visit https://developer.android.com/guide/topics/ui/splash-screen
   # Following are specific parameters for Android 12+.
   android_12:
-    color: "#2A4400"
-    color_dark: "#2A4400"
-    image: assets\logos\CampusCrave_Iconmark_Main.png
-    image_dark: assets\logos\CampusCrave_Iconmark_Main_White.png
+    #color: "#2A4400"
+    #color_dark: "#2A4400"
+    #image: assets\logos\CampusCrave_Iconmark_Main.png
+    #image_dark: assets\logos\CampusCrave_Iconmark_Main_White.png
        
     
     # The image parameter sets the splash screen icon image.  If this parameter is not specified,
