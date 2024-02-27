@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Import SvgPicture from flutter_svg package
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../../shared/theme/theme.dart'; // Import theme.dart file
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +96,12 @@ class LoginPage extends StatelessWidget {
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold, // Make text bold
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20.0), // Add spacing
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start, // Align row to the start
+                    mainAxisAlignment: MainAxisAlignment.center, // Align row to the center
                     children: [
-                      const SizedBox(width: 20.0), // Add spacing
                       _buildSocialButton(MdiIcons.phone, Colors.white),
                       const SizedBox(width: 20.0), // Add spacing
                       _buildSocialButton(MdiIcons.google, Colors.white),
@@ -110,42 +111,42 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40.0), // Add spacing
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to sign up page
+                  Navigator.pushNamed(context, '/signup_page.dart');
+                },
+                child: Text(
+                  'New to Crevify? Sign Up',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20.0), // Add spacing
+            const Align(
+              alignment: Alignment.bottomLeft, // Align to the bottom left
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  'Powered By',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10.0), // Add spacing
             Align(
               alignment: Alignment.bottomLeft, // Align to the bottom left
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to sign up page
-                        Navigator.pushNamed(context, '/signup_page.dart');
-                      },
-                      child: const Text(
-                        'New to Crevify? Sign Up',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10.0), // Add spacing
-                    const Text(
-                      'Powered By',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 10.0), // Add spacing
-                    Image.asset(
-                      'assets/logos/Ace_Cyber_Space_Logo_Horizontal_Full_Lockup_White.svg',
-                      height: 40.0,
-                      width: 120.0,
-                      errorBuilder: (context, error, stackTrace) {
-                        print("Exception: $error"); // Print error message
-                        return const SizedBox(); // Return empty container if image loading fails
-                      },
-                    ),
-                  ],
+                child: SvgPicture.asset(
+                  'assets/logos/Ace_Cyber_Space_Logo_Horizontal_Full_Lockup_White.svg',
+                  height: 40.0,
+                  width: 120.0,
                 ),
               ),
             ),
