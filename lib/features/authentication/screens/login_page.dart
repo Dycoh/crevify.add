@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Import SvgPicture from flutter_svg package
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../../../shared/theme/theme.dart'; // Import theme.dart file
+import '../../../shared/theme/theme.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key});
@@ -9,162 +9,245 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomTheme.darkGreenColor, // Set background color to dark green
+      backgroundColor: CustomTheme.darkGreenColor,
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 100.0, left: 20.0),
-              child: Text(
-                'Welcome Back!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40.0, // Increase font size
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Container(
+          height: MediaQuery.of(context).size.height, // Ensure bounded height
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 64.0),
+              Image.asset(
+                'assets/logos/_Iconmark_Main.webp',
+                height: 100.0,
+                width: 100.0,
               ),
-            ),
-            const SizedBox(height: 10.0), // Add spacing
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Your journey awaits. Log in to access all the features.',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14.0,
-                ),
-              ),
-            ),
-            const SizedBox(height: 40.0), // Add spacing
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)), // Lighten font color
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                    ),
-                    style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16.0), // Smaller font size
-                  ),
-                  const SizedBox(height: 20.0),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)), // Lighten font color
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                    ),
-                    style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16.0), // Smaller font size
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Perform login action
-                      Navigator.pushNamed(context, '/login'); // Navigate to the login screen
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 14),
-                      backgroundColor: Colors.green[900], // Set button background color
-                    ),
-                    child: const Text(
-                      'Log In', // Change button text to Log In
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20.0), // Add spacing
-                  const Text(
-                    'or log in with...',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold, // Make text bold
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20.0), // Add spacing
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // Align row to the center
-                    children: [
-                      _buildSocialButton(MdiIcons.phone, Colors.white),
-                      const SizedBox(width: 20.0), // Add spacing
-                      _buildSocialButton(MdiIcons.google, Colors.white),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 40.0), // Add spacing
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigate to sign up page
-                  Navigator.pushNamed(context, '/signup_page.dart');
-                },
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
-                  'New to Crevify? Sign Up',
+                  'Welcome Back!',
                   style: TextStyle(
                     color: Colors.white,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0), // Add spacing
-            const Align(
-              alignment: Alignment.bottomLeft, // Align to the bottom left
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text(
-                  'Powered By',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10.0), // Add spacing
-            Align(
-              alignment: Alignment.bottomLeft, // Align to the bottom left
-              child: Padding(
+              SizedBox(height: 10.0),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: SvgPicture.asset(
-                  'assets/logos/Ace_Cyber_Space_Logo_Horizontal_Full_Lockup_White.svg',
-                  height: 40.0,
-                  width: 120.0,
+                child: Text(
+                  'Your journey awaits. Log in to access all the features.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.0,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 40.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _buildInputField(MdiIcons.accountOutline, 'Username/Email'),
+                    SizedBox(height: 20.0),
+                    _buildPasswordField(),
+                    SizedBox(height: 40.0), // Reduced space between login and google button
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/login');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 10),
+                        backgroundColor: CustomTheme.lightTheme.primaryColor, // Use CustomTheme
+                      ),
+                      child: Text(
+                        'Log In',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15.0), // Reduced space between login and google button
+                    Text(
+                      'or',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 15.0), // Reduced space between 'or' text and Google button
+                    OutlinedButton(
+                      onPressed: () {
+                        // Perform login with Google action
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 10),
+                        side: BorderSide(color: CustomTheme.lightTheme.primaryColor), // Use CustomTheme
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            MdiIcons.google,
+                            color: Colors.white,
+                            size: 24.0,
+                          ),
+                          SizedBox(width: 10.0),
+                          Text(
+                            'Log In with Google',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 32.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/signup_page.dart');
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'New to Crevify? ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Create Account',
+                          style: TextStyle(
+                            color: CustomTheme.lightTheme.primaryColor, // Use CustomTheme
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Powered By',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10, // Make text slightly smaller
+                        ),
+                      ),
+                      SizedBox(height: 5.0), // Reduce space between 'Powered By' text and logo
+                      SvgPicture.asset(
+                        'assets/logos/Ace_Cyber_Space_Logo_Horizontal_Full_Lockup_White.svg',
+                        height: 40.0,
+                        width: 120.0,
+                        color: Colors.white, // Change color to white
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildSocialButton(IconData icon, Color color) {
-    return Container(
-      width: 60.0, // Increase icon button size
-      height: 60.0, // Increase icon button size
-      decoration: BoxDecoration(
-        color: AppTheme.lightTheme.primaryColor, // Use primary color from theme
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Icon(icon, color: color, size: 32.0), // Increase icon size
+  Widget _buildInputField(IconData icon, String hintText) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 20.0,
+          ),
+        ),
+        SizedBox(width: 10.0),
+        Expanded(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
+              enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+            ),
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordField() {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Icon(
+            MdiIcons.lockOutline,
+            color: Colors.white,
+            size: 20.0,
+          ),
+        ),
+        SizedBox(width: 10.0),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  // Implement your forgot password logic here
+                },
+                child: Text(
+                  'Forgot?',
+                  style: TextStyle(
+                    color: CustomTheme.lightTheme.primaryColor, // Use CustomTheme
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -58,4 +58,7 @@ class AppTheme {
 
 class CustomTheme {
   static const Color darkGreenColor = Color.fromARGB(255, 0, 32, 0); // Define your dark green color
+  
+  // Define lightTheme property
+  static final ThemeData lightTheme = AppTheme.lightTheme;
 }
