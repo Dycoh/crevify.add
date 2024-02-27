@@ -117,7 +117,7 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/signup_page.dart');
+                    Navigator.pushNamed(context, '/signup');
                   },
                   child: RichText(
                     text: TextSpan(
@@ -148,16 +148,16 @@ class LoginPage extends StatelessWidget {
                       Text(
                         'Powered By',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10, // Make text slightly smaller
+                          color: const Color.fromARGB(136, 255, 255, 255),
+                          fontSize: 9, // Make text slightly smaller
                         ),
                       ),
                       SizedBox(height: 5.0), // Reduce space between 'Powered By' text and logo
                       SvgPicture.asset(
                         'assets/logos/Ace_Cyber_Space_Logo_Horizontal_Full_Lockup_White.svg',
-                        height: 40.0,
-                        width: 120.0,
-                        color: Colors.white, // Change color to white
+                        height: 35.0,
+                        width: 105.0,
+                        color: const Color.fromARGB(155, 255, 255, 255), // Change color to white
                       ),
                     ],
                   ),

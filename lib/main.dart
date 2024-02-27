@@ -9,7 +9,7 @@ import 'features/homepage/screens/home_page.dart';
 import 'features/Onboarding/widgets/onboarding_widget.dart'; 
 import 'features/Onboarding/widgets/splash_screen.dart'; 
 import 'features/authentication/screens/login_page.dart'; // Import your LoginPage widget
-import 'features/authentication/screens/signup_page.dart'; // Import your SignupPage widget
+import 'features/authentication/screens/signup_page.dart'; // Comment out this line
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); 
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
               },
             ),
         '/login': (context) => const LoginPage(),
-        '/signup': (context) => const SignupPage(),
+        '/signup': (context) => const SignupPage(), // This will now refer to the SignupPage from login_page.dart
         // other routes...
       },
     );
